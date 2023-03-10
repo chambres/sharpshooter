@@ -1,0 +1,190 @@
+﻿
+var.Speed = 100   // 0 to 100
+
+PIE.FrameRate = 12000hz
+
+var.mouseX = mouse.x
+var.mouseY = mouse.y
+
+
+Osc1.port = 12000
+Osc1.broadcast = true
+Osc1.ip = "127.0.0.1"
+
+Osc1.mouseX = var.mouseX + ""
+Osc1.mouseY = var.mouseY + ""
+
+var.test1.a = keyboard1.A
+var.test2.a = keyboard2.A
+var.test3.a = keyboard3.A
+var.test4.a = keyboard4.A
+
+var.kb1.space = keyboard1.Space
+Osc1.kb1.space = int(var.kb1.space)
+
+var.kb2.space = keyboard1.Space
+Osc1.kb2.space = int(var.kb2.space)
+
+var.kb1.a = keyboard1.A
+Osc1.kb1.a = int(var.kb1.a)
+
+var.kb1.a = keyboard1.A
+Osc1.kb1.a = int(var.kb1.a)
+
+var.kb1.b = keyboard1.B
+Osc1.kb1.b = int(var.kb1.b)
+
+var.kb1.c = keyboard1.C
+Osc1.kb1.c = int(var.kb1.c)
+
+var.kb1.d = keyboard1.D
+Osc1.kb1.d = int(var.kb1.d)
+
+var.kb1.e = keyboard1.E
+Osc1.kb1.e = int(var.kb1.e)
+
+var.kb1.f = keyboard1.F
+Osc1.kb1.f = int(var.kb1.f)
+
+var.kb1.g = keyboard1.G
+Osc1.kb1.g = int(var.kb1.g)
+
+var.kb1.h = keyboard1.H
+Osc1.kb1.h = int(var.kb1.h)
+
+var.kb1.i = keyboard1.I
+Osc1.kb1.i = int(var.kb1.i)
+
+var.kb1.j = keyboard1.J
+Osc1.kb1.j = int(var.kb1.j)
+
+var.kb1.k = keyboard1.K
+Osc1.kb1.k = int(var.kb1.k)
+
+var.kb1.l = keyboard1.L
+Osc1.kb1.l = int(var.kb1.l)
+
+var.kb1.m = keyboard1.M
+Osc1.kb1.m = int(var.kb1.m)
+
+var.kb1.n = keyboard1.N
+Osc1.kb1.n = int(var.kb1.n)
+
+var.kb1.o = keyboard1.O
+Osc1.kb1.o = int(var.kb1.o)
+
+var.kb1.p = keyboard1.P
+Osc1.kb1.p = int(var.kb1.p)
+
+var.kb1.q = keyboard1.Q
+Osc1.kb1.q = int(var.kb1.q)
+
+var.kb1.r = keyboard1.R
+Osc1.kb1.r = int(var.kb1.r)
+
+var.kb1.s = keyboard1.S
+Osc1.kb1.s = int(var.kb1.s)
+
+var.kb1.t = keyboard1.T
+Osc1.kb1.t = int(var.kb1.t)
+
+var.kb1.u = keyboard1.U
+Osc1.kb1.u = int(var.kb1.u)
+
+var.kb1.v = keyboard1.V
+Osc1.kb1.v = int(var.kb1.v)
+
+var.kb1.w = keyboard1.W
+Osc1.kb1.w = int(var.kb1.w)
+
+var.kb1.x = keyboard1.X
+Osc1.kb1.x = int(var.kb1.x)
+
+var.kb1.y = keyboard1.Y
+Osc1.kb1.y = int(var.kb1.y)
+
+var.kb1.z = keyboard1.Z
+Osc1.kb1.z = int(var.kb1.z)
+
+var.kb2.a = keyboard3.A
+Osc1.kb2.a = int(var.kb2.a)
+
+var.kb2.b = keyboard3.B
+Osc1.kb2.b = int(var.kb2.b)
+
+var.kb2.c = keyboard3.C
+Osc1.kb2.c = int(var.kb2.c)
+
+var.kb2.d = keyboard3.D
+Osc1.kb2.d = int(var.kb2.d)
+
+var.kb2.e = keyboard3.E
+Osc1.kb2.e = int(var.kb2.e)
+
+var.kb2.f = keyboard3.F
+Osc1.kb2.f = int(var.kb2.f)
+
+var.kb2.g = keyboard3.G
+Osc1.kb2.g = int(var.kb2.g)
+
+var.kb2.h = keyboard3.H
+Osc1.kb2.h = int(var.kb2.h)
+
+var.kb2.i = keyboard3.I
+Osc1.kb2.i = int(var.kb2.i)
+
+var.kb2.j = keyboard3.J
+Osc1.kb2.j = int(var.kb2.j)
+
+var.kb2.k = keyboard3.K
+Osc1.kb2.k = int(var.kb2.k)
+
+var.kb2.l = keyboard3.L
+Osc1.kb2.l = int(var.kb2.l)
+
+var.kb2.m = keyboard3.M
+Osc1.kb2.m = int(var.kb2.m)
+
+var.kb2.n = keyboard3.N
+Osc1.kb2.n = int(var.kb2.n)
+
+var.kb2.o = keyboard3.O
+Osc1.kb2.o = int(var.kb2.o)
+
+var.kb2.p = keyboard3.P
+Osc1.kb2.p = int(var.kb2.p)
+
+var.kb2.q = keyboard3.Q
+Osc1.kb2.q = int(var.kb2.q)
+
+var.kb2.r = keyboard3.R
+Osc1.kb2.r = int(var.kb2.r)
+
+var.kb2.s = keyboard3.S
+Osc1.kb2.s = int(var.kb2.s)
+
+var.kb2.t = keyboard3.T
+Osc1.kb2.t = int(var.kb2.t)
+
+var.kb2.u = keyboard3.U
+Osc1.kb2.u = int(var.kb2.u)
+
+var.kb2.v = keyboard3.V
+Osc1.kb2.v = int(var.kb2.v)
+
+var.kb2.w = keyboard3.W
+Osc1.kb2.w = int(var.kb2.w)
+
+var.kb2.x = keyboard3.X
+Osc1.kb2.x = int(var.kb2.x)
+
+var.kb2.y = keyboard3.Y
+Osc1.kb2.y = int(var.kb2.y)
+
+var.kb2.z = keyboard3.Z
+Osc1.kb2.z = int(var.kb2.z)
+
+
+
+
+

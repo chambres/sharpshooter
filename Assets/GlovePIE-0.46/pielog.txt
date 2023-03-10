@@ -1,0 +1,57 @@
+(0, 09-Mar-2023 23:58:26) Initializing PieLog
+(0, 09-Mar-2023 23:58:26) Initializing filemode variable
+(0, 09-Mar-2023 23:58:26) Initializing PieSpeech
+(0, 09-Mar-2023 23:58:26) Initializing PieVariables
+(0, 09-Mar-2023 23:58:26) Initializing PieCursorUnit
+(0, 09-Mar-2023 23:58:26) Initializing PieMouse
+(0, 09-Mar-2023 23:58:26) Initializing PieKeyboard
+(0, 09-Mar-2023 23:58:26) Initializing PieInput
+(0, 09-Mar-2023 23:58:26) Initializing PieOSC
+(0, 09-Mar-2023 23:58:26) Initializing PiePie
+(0, 09-Mar-2023 23:58:26) Initializing PieFunction
+(0, 09-Mar-2023 23:58:26) Initializing PieStatement
+(0, 09-Mar-2023 23:58:26) Initializing PieExpression
+(0, 09-Mar-2023 23:58:26) Initializing PieJoystick
+(0, 09-Mar-2023 23:58:26) Initializing PieP5
+(0, 09-Mar-2023 23:58:26) Initializing PieMidi
+(0, 09-Mar-2023 23:58:26) Initializing PiePPJoy
+(0, 09-Mar-2023 23:58:26) Initializing PieRemote
+(0, 09-Mar-2023 23:58:26) Initializing Pie Speech Recognition
+(0, 09-Mar-2023 23:58:26) Initializing PieScreen
+(0, 09-Mar-2023 23:58:26) GetMonitorEDID
+(0, 09-Mar-2023 23:58:26) Initializing PieWIndow
+(0, 09-Mar-2023 23:58:26) Initializing PieCursors
+(0, 09-Mar-2023 23:58:26) Initializing PieZ800
+(0, 09-Mar-2023 23:58:26) Initializing PieIntersense
+(0, 09-Mar-2023 23:58:26) Initializing PieFastrak
+(0, 09-Mar-2023 23:58:26) Initializing PiePPT
+(0, 09-Mar-2023 23:58:26) Initializing PieTrackIR
+(0, 09-Mar-2023 23:58:26) Initializing PiePinch
+(0, 09-Mar-2023 23:58:26) Initializing PieBird
+(0, 09-Mar-2023 23:58:26) Initializing PieFiveDT
+(0, 09-Mar-2023 23:58:26) Starting main
+(0, 09-Mar-2023 23:58:26) Application object initialized
+(0, 09-Mar-2023 23:58:26) Creating main window
+(0, 09-Mar-2023 23:58:26) EditorForm.Create
+(0, 09-Mar-2023 23:58:26) Checking command line parameters:
+(0, 09-Mar-2023 23:58:26)   C:/Users/rahul/Documents/prog/Unity/kbshooter/Assets/GlovePIE-0.46/MAIN.PIE
+(0, 09-Mar-2023 23:58:26) ClearMidiGui
+(0, 09-Mar-2023 23:58:26) Creating debug window
+(0, 09-Mar-2023 23:58:26) Assigning exception handler
+(0, 09-Mar-2023 23:58:26) Creating debug remote control window
+(0, 09-Mar-2023 23:58:26) Running application
+(0, 09-Mar-2023 23:58:34) RunButton
+(0, 09-Mar-2023 23:58:34) Compile>Run
+(0, 09-Mar-2023 23:58:34) CompileCode
+(0, 09-Mar-2023 23:58:34) StartingInputMonitor CompileJoystick
+(0, 09-Mar-2023 23:58:34) EnumerateJoysticks
+(0, 09-Mar-2023 23:58:34) Enumerated... BadGamePad = False
+(0, 09-Mar-2023 23:58:34) StartCompileTimeP5 False
+(0, 09-Mar-2023 23:58:34) StoppingInputMonitor CompileJoystick
+(0, 09-Mar-2023 23:58:34) StartRuntime
+(0, 09-Mar-2023 23:58:34) StartingInputMonitor Mouse
+(0, 09-Mar-2023 23:58:34) StartKeyboardMonitor
+(0, 09-Mar-2023 23:58:34) StartingInputMonitor keyboard
+(0, 09-Mar-2023 23:58:34) StartRuntimeJoystick
+(0, 09-Mar-2023 23:58:34) ************************* False
+(0, 09-Mar-2023 23:58:34) Starting Runtime Osc
