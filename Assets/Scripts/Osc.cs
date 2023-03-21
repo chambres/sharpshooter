@@ -23,14 +23,14 @@ using System;
 /// 
 /// \subsection OSCmessages OSC Messages
 /// OSC messages are represented by the class OscMessage, and consist of two elements:
-/// - An address string for the device on the board youíre dealing with.
+/// - An address string for the device on the board youï¿½re dealing with.
 /// - A list of value(s) being sent to or from that device. The list of values is optional.
 /// 
 /// From the perspective of OSC addresses, the Make Controller Kit is organized into a hierarchy of two or three layers:
-/// - subsystems ñ classes of device, such as analog inputs, servo controllers, and digital outputs.
-/// - devices ñ the index of a specific device within a subsystem.  
+/// - subsystems ï¿½ classes of device, such as analog inputs, servo controllers, and digital outputs.
+/// - devices ï¿½ the index of a specific device within a subsystem.  
 /// If there is only one device in a subsystem, the device is not included in the OSC address.
-/// - properties ñ different devices have different properties, such as the value of an analog input, 
+/// - properties ï¿½ different devices have different properties, such as the value of an analog input, 
 /// the position of a servo motor, or the state of an LED. 
 /// 
 /// OSC messages always begin with a slash, and use a slash to delimit each element in the address, 
@@ -55,8 +55,8 @@ using System;
 /// \section sendingdata Sending Data
 /// As previously mentioned, the Make Controller Kit can communicate over both 
 /// Ethernet and USB.  Messages are sent as packets, both over USB and UDP, and 
-/// corresponding structures are used ñ UsbPacket and UdpPacket.  Once youíve created 
-/// a packet, you can simply call its Send() method, with the OscMessage youíd like to send.  
+/// corresponding structures are used ï¿½ UsbPacket and UdpPacket.  Once youï¿½ve created 
+/// a packet, you can simply call its Send() method, with the OscMessage youï¿½d like to send.  
 /// There are helper methods to create an OscMessage from a string, or you can pass in the OscMessage itself. 
 /// 
 /// For example, you might set up your UsbSend() routine to look something like:
@@ -70,7 +70,7 @@ using System;
 /// 
 /// \section readingdata Reading Data
 /// The Make Controller Kit must be polled in order to read data from it.  To do this, 
-/// send an OscMessage with the address of the device youíd like to read, but omit 
+/// send an OscMessage with the address of the device youï¿½d like to read, but omit 
 /// the list of values.  When the board receives an OscMessage with no value, 
 /// it interprets that as a read request, and sends back an OscMessage with the 
 /// current value at the appropriate address.
@@ -225,7 +225,7 @@ using System;
         }
         catch (Exception e)
         {
-            //Debug.Log("ThreadAbortException"+e);
+            Debug.Log("ThreadAbortException"+e);
         }
         finally
         {

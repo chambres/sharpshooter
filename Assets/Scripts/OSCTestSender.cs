@@ -20,66 +20,9 @@ public class OSCTestSender : MonoBehaviour
     public float mouseX;
     public float mouseY;
 
-    int[] kb1 = new int[27];
-    int[] kb2 = new int[27];
+    public int[] kb1 = new int[27];
+    public int[] kb2 = new int[27];
 
-    #region
-    public int kb1a;
-    public int kb1b;
-    public int kb1c;
-    public int kb1d;
-    public int kb1e;
-    public int kb1f;
-    public int kb1g;
-    public int kb1h;
-    public int kb1i;
-    public int kb1j ;
-    public int kb1k ;
-    public int kb1l ;
-    public int kb1m ;
-    public int kb1n ;
-    public int kb1o ;
-    public int kb1p ;
-    public int kb1q ;
-    public int kb1r ;
-    public int kb1s ;
-    public int kb1t ;
-    public int kb1u ;
-    public int kb1v ;
-    public int kb1w ;
-    public int kb1x ;
-    public int kb1y ;
-    public int kb1z ;
-    public int kb1space ;
-
-    public int kb2a;
-    public int kb2b;
-    public int kb2c;
-    public int kb2d;
-    public int kb2e;
-    public int kb2f;
-    public int kb2g;
-    public int kb2h;
-    public int kb2i;
-    public int kb2j ;
-    public int kb2k ;
-    public int kb2l ;
-    public int kb2m ;
-    public int kb2n ;
-    public int kb2o ;
-    public int kb2p ;
-    public int kb2q ;
-    public int kb2r ;
-    public int kb2s ;
-    public int kb2t ;
-    public int kb2u ;
-    public int kb2v ;
-    public int kb2w ;
-    public int kb2x ;
-    public int kb2y ;
-    public int kb2z ;
-    public int kb2space ;
-    #endregion
 
     ~OSCTestSender()
     {
