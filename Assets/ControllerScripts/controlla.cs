@@ -11,6 +11,8 @@ public class controlla : MonoBehaviour
     public AudioSource FIRE;
     public AudioSource SNIPERSHOT;
     bool beginDegeneration = false;
+    
+    int space = 32;
 
     public float health = 100f;
 
@@ -20,29 +22,19 @@ public class controlla : MonoBehaviour
     };
 
     private int sequenceIndex;
-    
-    OSCTestSender oscTestSender;
-    void Awake(){
-        print("Application.dataPath = " + Application.dataPath);
-        // var p = new System.Diagnostics.Process();
-        // p.StartInfo.FileName = Application.dataPath + "/GlovePIE-0.46/PieFREE.exe";
-        // p.StartInfo.Arguments = Application.dataPath + "/GlovePIE-0.46/MAIN.PIE";
-        // p.Start();
-        //p.StandardOutput.ReadToEnd().Dump();
-    }
+
+
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log(heartbeat);
         heartbeat.Play();
-        oscTestSender = keyboardTracker.GetComponent<OSCTestSender>();
         StartCoroutine(waiter());
 
     }
 
     IEnumerator waiter()
      {
-        
          int wait_time = Random.Range (5, 10);
          yield return new WaitForSeconds (wait_time);         
          firing= true;
@@ -53,40 +45,46 @@ public class controlla : MonoBehaviour
      }
 
 
+    bool checkingfiring = true;
+
+
     void checkFiring(){
+
         if(firing){   
-            if(oscTestSender.getkb2("space") && firing){
+            if(InputRedirector.getkb2(space)){
                 Debug.Log("kb2firedfirst");
                 SNIPERSHOT.Play();
                 firing = false;
                 beginDegeneration = true;
-            };
-
-            if(oscTestSender.getkb1("space") && firing){
+                checkingfiring = false;
+                return;
+            }
+            else if(InputRedirector.getkb1(space)){
                 Debug.Log("kb1firedfirst");
                 SNIPERSHOT.Play(); 
                 firing = false;
                 beginDegeneration = true;
+                checkingfiring = false;
+                return;
             };
             
         }
         else{
-           if(oscTestSender.getkb2("space")){
+           if(InputRedirector.getkb2(space)){
                 Debug.Log("kb1failedfirst");
                 SNIPERSHOT.Play();
                 firing = false;
                 heartbeat.Stop();
-            };
-
-            if(oscTestSender.getkb1("space")){
+                checkingfiring = false;
+            }
+            else if(InputRedirector.getkb1(space)){
                 Debug.Log("kb2failedfirst");
                 SNIPERSHOT.Play();
                 firing = false;
                 heartbeat.Stop();
+                checkingfiring = false;
             }; 
-            
         }
-
     }
     
     
@@ -106,11 +104,19 @@ public class controlla : MonoBehaviour
     void Update()
     {
 
-        checkFiring();
+        if(checkingfiring){
+            checkFiring();
+        }
+        
 
         if(beginDegeneration){
             StartCoroutine(subtractHealth());
-            if (oscTestSender.getkb1(sequence[sequenceIndex])) {
+            Debug.Log(sequence[sequenceIndex]);
+
+            Debug.Log(InputRedirector.getkb1(sequence[sequenceIndex]));
+
+            if (InputRedirector.getkb1(sequence[sequenceIndex])) {
+                
                 if (++sequenceIndex == sequence.Length){
                     sequenceIndex = 0;
                     Debug.Log("kb1");
@@ -118,7 +124,7 @@ public class controlla : MonoBehaviour
                 }
             } else if (Input.anyKeyDown) sequenceIndex = 0;
 
-            if (oscTestSender.getkb2(sequence[sequenceIndex])) {
+            if (InputRedirector.getkb2(sequence[sequenceIndex])) {
                 if (++sequenceIndex == sequence.Length){
                     sequenceIndex = 0;
                     Debug.Log("kb2");
