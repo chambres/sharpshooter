@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class controlla : MonoBehaviour
 {
-    public GameObject keyboardTracker;
+
+
+    public LinearIndicator healthBar;
+
     public bool firing= false;
 
     public AudioSource heartbeat;
+    public AudioSource beat1;
+    public AudioSource beat2;
     public AudioSource FIRE;
     public AudioSource SNIPERSHOT;
     bool beginDegeneration = false;
+
+    public float beattime;
     
     int space = 32;
 
@@ -27,25 +35,52 @@ public class controlla : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(heartbeat);
-        heartbeat.Play();
+        healthBar.SetValue(health);
         StartCoroutine(waiter());
+        StartCoroutine(beat());
+        
 
+    }
+
+
+    IEnumerator beat(){
+        while(true){
+            yield return new WaitForSeconds (beattime);
+            if(firing){
+                FIRE.Play();
+                StopCoroutine(beat());
+                break;
+            }
+            beat1.Play();
+            yield return new WaitForSeconds (beattime*3);
+            beat2.Play();
+            beattime -= .005f;
+        }
     }
 
     IEnumerator waiter()
      {
-         int wait_time = Random.Range (5, 10);
-         yield return new WaitForSeconds (wait_time);         
+         int wait_time = UnityEngine.Random.Range (6, 11);
+         yield return new WaitForSeconds (wait_time);
          firing= true;
-         FIRE.Play();
-         heartbeat.Stop();
          Debug.Log("FIRE");         
          //FIRE.Play();
      }
 
+     IEnumerator test(){
+        int x = 100;
+        while(true){
+            healthBar.SetValue(health);
+            yield return new WaitForSeconds (.1f);
+            x--;
+        }
+     }
+
 
     bool checkingfiring = true;
+
+    public GameObject playeronepolymodel;
+    
 
 
     void checkFiring(){
@@ -57,6 +92,15 @@ public class controlla : MonoBehaviour
                 firing = false;
                 beginDegeneration = true;
                 checkingfiring = false;
+                
+                foreach (Transform child in playeronepolymodel.transform)
+                {
+                    child.gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    child.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                    
+                }
+                
+
                 return;
             }
             else if(InputRedirector.getkb1(space)){
@@ -86,18 +130,56 @@ public class controlla : MonoBehaviour
             }; 
         }
     }
+
+
+    int polyExplosionFrameFromHealth(float health){
+        return (int) (health * 1.5);
+    }
     
-    
+    bool healthBarLower = true;
     IEnumerator subtractHealth(){
-        while(true){
-            yield return new WaitForSeconds (1f);
-            health = health - .1f;
-            if(health <= 0){
-                Debug.Log("DEAD");
-                beginDegeneration = false;
-                break;
-            }
+        
+        if(healthBarLower){
+            health = 50;
+            StartCoroutine(test());
+            healthBarLower = false;
         }
+    
+        yield return new WaitForSeconds (1f);
+        health = health - .1f;
+        Debug.Log("healtH" + polyExplosionFrameFromHealth(health));
+        playeronepolymodel.GetComponent<PolyManager>().setSliderValue(polyExplosionFrameFromHealth(health));
+        if(health <= 0){
+            Debug.Log("DEAD");
+            beginDegeneration = false;
+            StopCoroutine(subtractHealth());
+        }
+        if(health >= 100){
+            beginDegeneration = false;
+            StopCoroutine(subtractHealth());
+            Debug.Log("REVIVE");
+        }
+        
+    }
+
+    void checkMashing(){
+         StartCoroutine(subtractHealth());
+            if (InputRedirector.getkb1(sequence[sequenceIndex])) {
+                
+                if (++sequenceIndex == sequence.Length){
+                    sequenceIndex = 0;
+                    Debug.Log("kb1");
+                    health += .5f;
+                }
+            } else if (Input.anyKeyDown) sequenceIndex = 0;
+
+            if (InputRedirector.getkb2(sequence[sequenceIndex])) {
+                if (++sequenceIndex == sequence.Length){
+                    sequenceIndex = 0;
+                    Debug.Log("kb2");
+                    health += .5f;
+                }
+            } else if (Input.anyKeyDown) sequenceIndex = 0;
     }
 
     // Update is called once per frame
@@ -110,27 +192,7 @@ public class controlla : MonoBehaviour
         
 
         if(beginDegeneration){
-            StartCoroutine(subtractHealth());
-            Debug.Log(sequence[sequenceIndex]);
-
-            Debug.Log(InputRedirector.getkb1(sequence[sequenceIndex]));
-
-            if (InputRedirector.getkb1(sequence[sequenceIndex])) {
-                
-                if (++sequenceIndex == sequence.Length){
-                    sequenceIndex = 0;
-                    Debug.Log("kb1");
-                    health += 5;
-                }
-            } else if (Input.anyKeyDown) sequenceIndex = 0;
-
-            if (InputRedirector.getkb2(sequence[sequenceIndex])) {
-                if (++sequenceIndex == sequence.Length){
-                    sequenceIndex = 0;
-                    Debug.Log("kb2");
-                    health += 5;
-                }
-            } else if (Input.anyKeyDown) sequenceIndex = 0;
+           checkMashing();
         }
             
 
