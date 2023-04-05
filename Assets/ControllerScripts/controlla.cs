@@ -133,7 +133,7 @@ public class controlla : MonoBehaviour
 
 
     int polyExplosionFrameFromHealth(float health){
-        return (int) (health * 1.5);
+        return (int) (health * 35);
     }
     
     bool healthBarLower = true;
@@ -162,6 +162,10 @@ public class controlla : MonoBehaviour
         
     }
 
+    float timeOfLastPress;
+
+    public bool IHaveTapped { get; private set; }
+
     void checkMashing(){
          StartCoroutine(subtractHealth());
             if (InputRedirector.getkb1(sequence[sequenceIndex])) {
@@ -169,7 +173,7 @@ public class controlla : MonoBehaviour
                 if (++sequenceIndex == sequence.Length){
                     sequenceIndex = 0;
                     Debug.Log("kb1");
-                    health += .5f;
+                    health += .7f;
                 }
             } else if (Input.anyKeyDown) sequenceIndex = 0;
 
@@ -177,7 +181,7 @@ public class controlla : MonoBehaviour
                 if (++sequenceIndex == sequence.Length){
                     sequenceIndex = 0;
                     Debug.Log("kb2");
-                    health += .5f;
+                    health += .7f;
                 }
             } else if (Input.anyKeyDown) sequenceIndex = 0;
     }

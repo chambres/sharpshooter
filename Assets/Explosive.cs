@@ -6,7 +6,7 @@ public class Explosive : MonoBehaviour {
     [SerializeField] private GameObject _particles;
 
 
-    public bool explode = false;
+    public bool explode;
  
 
     void boom(){
@@ -22,7 +22,7 @@ public class Explosive : MonoBehaviour {
  
             //Instantiate(_particles, transform.position, Quaternion.identity);
  
-            Destroy(gameObject);
+            //Destroy(gameObject);
     }
 
     void Update(){

@@ -12,8 +12,7 @@ public class PolyManager : MonoBehaviour
 
     public void setSliderValue(int value){
         foreach (Transform child in this.transform)
-        {
-            
+        {   
             child.gameObject.GetComponent<TimeBody>().sliderValue = (int)Mathf.Lerp(child.gameObject.GetComponent<TimeBody>().sliderValue, value, .3f);
         }
     }

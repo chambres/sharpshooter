@@ -1,42 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class TimeBody : MonoBehaviour {
 
 	bool isRewinding = false;
 
-	public float recordTime = 5f;
+	public float recordTime;
 
 	public List<PointInTime> pointsInTime;
 
 	Rigidbody rb;
 
 	// Use this for initialization
-	void Start () {
+	void Start () { 
 		pointsInTime = new List<PointInTime>();
 		rb = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Return))
-			StartRewind();
-		if (Input.GetKeyUp(KeyCode.Return))
-			StopRewind();
 	}
 
 	//add slider
-	[Range(0, 149)]
+	[Range(0, 3499)]
 	public int sliderValue = 0;
 
 	void FixedUpdate ()
 	{
-		if (isRewinding)
-			Rewind();
-		
-		
-		
 		if(timerRunning){
          tenSec -= Time.smoothDeltaTime;
              if(tenSec >= 0){
@@ -49,13 +40,21 @@ public class TimeBody : MonoBehaviour {
              }
          }
 
-		PointInTime pointInTime = pointsInTime[sliderValue];
-		transform.position = pointInTime.position;
-		transform.rotation = pointInTime.rotation;
+		try
+		{
+			PointInTime pointInTime = pointsInTime[sliderValue];
+			transform.position = pointInTime.position;
+			transform.rotation = pointInTime.rotation;
+		}
+        catch (ArgumentOutOfRangeException e)
+        {
+			;
+        }
+            
 			
 	}
 
-	 public float tenSec = 5;
+	 public float tenSec;
      public bool timerRunning = true;
 	 int i;
      int ij;
@@ -78,10 +77,7 @@ public class TimeBody : MonoBehaviour {
 
 	void Record ()
 	{
-		if (pointsInTime.Count > Mathf.Round(recordTime / Time.fixedDeltaTime))
-		{
-			pointsInTime.RemoveAt(pointsInTime.Count - 1);
-		}
+
 
 		pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation));
 	}
