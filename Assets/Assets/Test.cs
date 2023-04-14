@@ -17,7 +17,7 @@ public class Test : MonoBehaviour
         while (true)
         {
             a++;
-            Debug.Log("a" + a);
+
             yield return null;
         }
     }
@@ -26,6 +26,6 @@ public class Test : MonoBehaviour
     void Update()
     {
         b++;
-        Debug.Log("b"+b);
+
     }
 }

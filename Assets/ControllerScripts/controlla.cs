@@ -148,7 +148,8 @@ public class controlla : MonoBehaviour
         yield return new WaitForSeconds (1f);
         health = health - .1f;
         Debug.Log("healtH" + polyExplosionFrameFromHealth(health));
-        playeronepolymodel.GetComponent<PolyManager>().setSliderValue(polyExplosionFrameFromHealth(health));
+        
+        //playeronepolymodel.GetComponent<PolyManager>().setSliderValue(polyExplosionFrameFromHealth(health));
         if(health <= 0){
             Debug.Log("DEAD");
             beginDegeneration = false;

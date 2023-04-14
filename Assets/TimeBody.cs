@@ -77,8 +77,6 @@ public class TimeBody : MonoBehaviour {
 
 	void Record ()
 	{
-
-
 		pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation));
 	}
 
