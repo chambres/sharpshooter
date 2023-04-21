@@ -86,13 +86,15 @@ public class controlla : MonoBehaviour
     void checkFiring(){
 
         if(firing){   
+            //SUCCESS
             if(InputRedirector.getKeyDown(space, 2)){
                 Debug.Log("kb2firedfirst");
                 SNIPERSHOT.Play();
                 firing = false;
                 beginDegeneration = true;
                 checkingfiring = false;
-                GameObject.Find("BlockForce").GetComponent<Rigidbody>().isKinematic = false;                
+                GameObject.Find("BlockForce").GetComponent<Rigidbody>().isKinematic = false;
+                GameObject.Find("BlockForce").GetComponent<BlockForce>().keyboardNum = 1;
                 return;
             }
             else if(InputRedirector.getKeyDown(space, 1)){
@@ -101,6 +103,8 @@ public class controlla : MonoBehaviour
                 firing = false;
                 beginDegeneration = true;
                 checkingfiring = false;
+                GameObject.Find("BlockForce").GetComponent<Rigidbody>().isKinematic = false;
+                GameObject.Find("BlockForce").GetComponent<BlockForce>().keyboardNum = 2;
                 return;
             };
             

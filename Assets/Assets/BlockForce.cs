@@ -6,6 +6,9 @@ public class BlockForce : MonoBehaviour
 {
     public GameObject slider;
     public int count = 1;
+
+    public int keyboardNum = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +25,13 @@ public class BlockForce : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(2.45f * GetComponent<Rigidbody>().mass * Vector3.down);
 
 
-        if(transform.position.y < -2.6f && !allowMashing)
+        if(transform.position.y < 2.6f && !allowMashing)
         {
             allowMashing = true;
         }
        
 
-        if (InputRedirector.getKeyDown(InputRedirector.space,1) && allowMashing)
+        if (InputRedirector.getKeyDown(InputRedirector.space, keyboardNum) && allowMashing)
         {
             Debug.Log("pressed");
             if (GetComponent<Rigidbody>().velocity.y > 0)
