@@ -8,26 +8,68 @@ using UnityEngine;
 public class InputRedirector : MonoBehaviour
 {
 
-    
     public static int? player1HID = null;
     public static int? player2HID = null;
 
-    public static bool[] kb1 = new bool[127];
-    public static bool[] kb2 = new bool[127];
+    public const int space = 32;
 
-    public static bool getkb1(char key){
-        return kb1[Char.ToUpper(key)];
-    }
-    public static bool getkb2(char key){
-        return kb2[Char.ToUpper(key)];
+    //public static bool[] kb1 = new bool[127];
+    //public static bool[] kb2 = new bool[127];
+
+    public static bool getkey(char key, int kb)
+    {
+        return kb switch
+        {
+            1 => kb1[key, 0],
+            2 => kb2[key, 0],
+            _ => false,
+        };
     }
 
-    public static bool getkb1(int key){
-        return kb1[key];
+    public static bool getkey(int key, int kb)
+    {
+        return kb switch
+        {
+            1 => kb1[key, 0],
+            2 => kb2[key, 0],
+            _ => false,
+        };
     }
-    public static bool getkb2(int key){
-        return kb2[key];
+
+
+    //create a array of arrays, where each array is a key and its value
+    public static bool[,] kb1 = new bool[127, 2];
+    public static bool[,] kb2 = new bool[127, 2];
+    
+    
+
+    public static bool getKeyDown(int key, int keyboard)
+    {
+        bool ret;
+        switch (keyboard)
+        {
+            case 1:
+                ret = kb1[key, 0] && kb1[key, 1];
+                if (ret)
+                    kb1[key, 0] = kb1[key, 1] = false;
+                return ret;
+            case 2:
+                ret = kb2[key, 0] && kb2[key, 1];
+                if (ret)
+                    kb2[key, 0] = kb2[key, 1] = false;
+                return ret;
+            default: 
+                return false;
+        }
+        
+
     }
+
+
+
+    
+    
+
 
     private static int CopyEventFromRawInputBuffer(int offset, int dataOffset, ref int rawInputEventCount, ref int rawInputEventsSize)
     {
@@ -49,7 +91,6 @@ public class InputRedirector : MonoBehaviour
                     var keyboard = *(RAWKEYBOARD*)(rawInputBufferPtr + dataOffset);
 
                     // Releasing space key will toggle whether we forward events to Unity
-                    Debug.Log("key pressed" + keyboard.VKey);
                     if((keyboard.Message == WM_KEYDOWN)){
                         if(player1HID == null && player2HID == null){
                             Debug.Log("set player1HID to " + header.hDevice);
@@ -60,20 +101,34 @@ public class InputRedirector : MonoBehaviour
                             player2HID = (int)header.hDevice;
                         }
 
-                        if((int)header.hDevice == player1HID){
-                            kb1[keyboard.VKey] = true;
+                        if((int)header.hDevice == player1HID) { 
+                           if(kb1[keyboard.VKey, 0] != true)
+                            {
+                                kb1[keyboard.VKey, 0] = true;
+                            }
                         }
                         else if((int)header.hDevice == player2HID){
-                            kb2[keyboard.VKey] = true;
+                            if (kb2[keyboard.VKey, 0] != true)
+                            {
+                                kb2[keyboard.VKey, 0] = true;
+                            }
                         }
                     }
                     if((keyboard.Message == WM_KEYUP)){
                         if((int)header.hDevice == player1HID){
-                            kb1[keyboard.VKey] = false;
+                            if(kb1[keyboard.VKey, 0] == true && kb1[keyboard.VKey, 1] == false)
+                            {
+                                kb1[keyboard.VKey, 1] = true;
+                            }
                         }
                         else if((int)header.hDevice == player2HID){
-                            kb2[keyboard.VKey] = false;
+                            if (kb2[keyboard.VKey, 0] == true && kb2[keyboard.VKey, 1] == false)
+                            {
+                                kb2[keyboard.VKey, 1] = true;
+                            }
                         }
+
+
                     }
 
                     //Debug.Log("device origin: " + header.hDevice);

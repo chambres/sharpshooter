@@ -62,7 +62,6 @@
     <Compile Include="Assets\GDT-LinearIndicator\ExampleScriptLinearIndicator.cs" />
     <Compile Include="Assets\Assets\Test.cs" />
     <Compile Include="Assets\Scripts\InputRedirector.cs" />
-    <Compile Include="Assets\Scripts\Inspection.cs" />
     <Compile Include="Assets\SliderController.cs" />
     <Compile Include="Assets\Explosive.cs" />
     <Compile Include="Assets\Assets\Player.cs" />

@@ -86,24 +86,16 @@ public class controlla : MonoBehaviour
     void checkFiring(){
 
         if(firing){   
-            if(InputRedirector.getkb2(space)){
+            if(InputRedirector.getKeyDown(space, 2)){
                 Debug.Log("kb2firedfirst");
                 SNIPERSHOT.Play();
                 firing = false;
                 beginDegeneration = true;
                 checkingfiring = false;
-                
-                foreach (Transform child in playeronepolymodel.transform)
-                {
-                    child.gameObject.GetComponent<MeshRenderer>().enabled = true;
-                    child.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                    
-                }
-                
-
+                GameObject.Find("BlockForce").GetComponent<Rigidbody>().isKinematic = false;                
                 return;
             }
-            else if(InputRedirector.getkb1(space)){
+            else if(InputRedirector.getKeyDown(space, 1)){
                 Debug.Log("kb1firedfirst");
                 SNIPERSHOT.Play(); 
                 firing = false;
@@ -114,14 +106,14 @@ public class controlla : MonoBehaviour
             
         }
         else{
-           if(InputRedirector.getkb2(space)){
+           if(InputRedirector.getKeyDown(space, 2)){
                 Debug.Log("kb1failedfirst");
                 SNIPERSHOT.Play();
                 firing = false;
                 heartbeat.Stop();
                 checkingfiring = false;
             }
-            else if(InputRedirector.getkb1(space)){
+            else if(InputRedirector.getKeyDown(space, 1)){
                 Debug.Log("kb2failedfirst");
                 SNIPERSHOT.Play();
                 firing = false;
@@ -132,21 +124,21 @@ public class controlla : MonoBehaviour
     }
 
 
-    int polyExplosionFrameFromHealth(float health){
-        return (int) (health * 35);
+    float polyExplosionFrameFromHealth(float health){
+        return GameObject.Find("BlockForce").GetComponent<BlockForce>().transform.position.y * 11.1111f;
     }
     
     bool healthBarLower = true;
     IEnumerator subtractHealth(){
         
         if(healthBarLower){
-            health = 50;
+            health = 100;
             StartCoroutine(test());
             healthBarLower = false;
         }
     
         yield return new WaitForSeconds (1f);
-        health = health - .1f;
+        //health = health - .1f;
         Debug.Log("healtH" + polyExplosionFrameFromHealth(health));
         
         //playeronepolymodel.GetComponent<PolyManager>().setSliderValue(polyExplosionFrameFromHealth(health));
@@ -167,25 +159,7 @@ public class controlla : MonoBehaviour
 
     public bool IHaveTapped { get; private set; }
 
-    void checkMashing(){
-         StartCoroutine(subtractHealth());
-            if (InputRedirector.getkb1(sequence[sequenceIndex])) {
-                
-                if (++sequenceIndex == sequence.Length){
-                    sequenceIndex = 0;
-                    Debug.Log("kb1");
-                    health += .7f;
-                }
-            } else if (Input.anyKeyDown) sequenceIndex = 0;
-
-            if (InputRedirector.getkb2(sequence[sequenceIndex])) {
-                if (++sequenceIndex == sequence.Length){
-                    sequenceIndex = 0;
-                    Debug.Log("kb2");
-                    health += .7f;
-                }
-            } else if (Input.anyKeyDown) sequenceIndex = 0;
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -194,11 +168,7 @@ public class controlla : MonoBehaviour
         if(checkingfiring){
             checkFiring();
         }
-        
 
-        if(beginDegeneration){
-           checkMashing();
-        }
             
 
 

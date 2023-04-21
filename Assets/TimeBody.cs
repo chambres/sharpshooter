@@ -33,10 +33,12 @@ public class TimeBody : MonoBehaviour {
              if(tenSec >= 0){
 				Record();
              }else{
-				Debug.Log("Count: "  +pointsInTime.Count);
-                 Debug.Log("Done");
 				 this.GetComponent<Rigidbody>().isKinematic = true;
-                 timerRunning = false;
+                GameObject.Find("BlockForce").GetComponent<BlockForce>().transform.position = new Vector3(GameObject.Find("BlockForce").GetComponent<BlockForce>().transform.position.x, 9, GameObject.Find("BlockForce").GetComponent<BlockForce>().transform.position.z);
+				GameObject.Find("BlockForce").GetComponent<BlockForce>().allowMashing = false;
+				GameObject.Find("BlockForce").GetComponent<Rigidbody>().isKinematic = true;
+				
+				timerRunning = false;
              }
          }
 

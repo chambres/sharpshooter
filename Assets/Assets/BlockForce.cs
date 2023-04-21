@@ -12,22 +12,23 @@ public class BlockForce : MonoBehaviour
         
     }
     
+    public bool allowMashing = false;
 
     // Update is called once per frame
     void Update()
     {
-        //if(GetComponent<Rigidbody>().velocity.y > .1f)
-        //{
-        //    GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().velocity.y * 10 * 2.45f * GetComponent<Rigidbody>().mass * Vector3.down);
-        //}
-        //else
-        //{
-            GetComponent<Rigidbody>().AddForce(2.45f * GetComponent<Rigidbody>().mass * Vector3.down);
-        //}
-            
-        
 
-        if (Input.GetKeyDown(KeyCode.W))
+
+        GetComponent<Rigidbody>().AddForce(2.45f * GetComponent<Rigidbody>().mass * Vector3.down);
+
+
+        if(transform.position.y < -2.6f && !allowMashing)
+        {
+            allowMashing = true;
+        }
+       
+
+        if (InputRedirector.getKeyDown(InputRedirector.space,1) && allowMashing)
         {
             Debug.Log("pressed");
             if (GetComponent<Rigidbody>().velocity.y > 0)
@@ -40,7 +41,7 @@ public class BlockForce : MonoBehaviour
                 GetComponent<Rigidbody>().drag = 0;
 
             }
-            GetComponent<Rigidbody>().AddForce(2.45f / 4 * 1 / Time.deltaTime * GetComponent<Rigidbody>().mass * Vector3.up);
+            GetComponent<Rigidbody>().AddForce(2.45f / 3 * 1 / Time.deltaTime * GetComponent<Rigidbody>().mass * Vector3.up);
             count++;
             
         }
