@@ -36,6 +36,7 @@ public class TimeBody : MonoBehaviour {
 				 this.GetComponent<Rigidbody>().isKinematic = true;
                 GameObject.Find("BlockForce").GetComponent<BlockForce>().transform.position = new Vector3(GameObject.Find("BlockForce").GetComponent<BlockForce>().transform.position.x, 9, GameObject.Find("BlockForce").GetComponent<BlockForce>().transform.position.z);
 				GameObject.Find("BlockForce").GetComponent<BlockForce>().allowMashing = false;
+				GameObject.Find("BlockForce").GetComponent<BlockForce>().doneRecording = true;
 				GameObject.Find("BlockForce").GetComponent<Rigidbody>().isKinematic = true;
 				
 				timerRunning = false;

@@ -63,9 +63,10 @@ public class controlla : MonoBehaviour
          int wait_time = UnityEngine.Random.Range (6, 11);
          yield return new WaitForSeconds (wait_time);
          firing= true;
-         Debug.Log("FIRE");         
-         //FIRE.Play();
-     }
+         Debug.Log("FIRE");
+        GameObject.Find("DialogueManager").GetComponent<DialogueManager>().PlayDialogue("FIRE!");
+        //FIRE.Play();
+    }
 
      IEnumerator test(){
         int x = 100;
@@ -85,8 +86,9 @@ public class controlla : MonoBehaviour
 
     void checkFiring(){
 
-        if(firing){   
+        if(firing){
             //SUCCESS
+            //GameObject.Find("DialogueManager").GetComponent<DialogueManager>().PlayDialogue2();
             if(InputRedirector.getKeyDown(space, 2)){
                 Debug.Log("kb2firedfirst");
                 SNIPERSHOT.Play();

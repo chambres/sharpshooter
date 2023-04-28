@@ -18,8 +18,7 @@ public class SliderController : MonoBehaviour
     {
         
         slider.minValue = 0;
-        slider.maxValue = GameObject.Find("BASE_Low Poly Man.001").GetComponent<TimeBody>().pointsInTime.Count-1;
-        Debug.Log(slider.maxValue);
+        slider.maxValue = GameObject.Find("BASE_Low Poly Man.001").GetComponent<TimeBody>().pointsInTime.Count - 1;
 
         GameObject.Find("Low Poly SuperHero").GetComponent<PolyManager>().setSliderValue((int)slider.value);
 
