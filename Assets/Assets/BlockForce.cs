@@ -12,7 +12,7 @@ public class BlockForce : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log(slider.name);
     }
     
     public bool allowMashing = false;
@@ -44,7 +44,7 @@ public class BlockForce : MonoBehaviour
                 GetComponent<Rigidbody>().drag = 0;
 
             }
-            GetComponent<Rigidbody>().AddForce(2.45f / 3 * 1 / Time.deltaTime * GetComponent<Rigidbody>().mass * Vector3.up);
+            GetComponent<Rigidbody>().AddForce(3.45f / 3 * 1 / Time.deltaTime * GetComponent<Rigidbody>().mass * Vector3.up);
             count++;
             
         }

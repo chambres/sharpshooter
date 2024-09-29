@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 public class PolyManager : MonoBehaviour
 {
+    public GameObject blockForce;
     // Start is called before the first frame update
     void Start()
     {

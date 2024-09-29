@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Numerics;
 public class TimeBody : MonoBehaviour {
 
 	bool isRewinding = false;
+
+	public GameObject parent;
 
 	public float recordTime;
 
@@ -33,10 +36,12 @@ public class TimeBody : MonoBehaviour {
              if(tenSec >= 0){
 				Record();
              }else{
-				 this.GetComponent<Rigidbody>().isKinematic = true;
-                GameObject.Find("BlockForce").GetComponent<BlockForce>().transform.position = new Vector3(GameObject.Find("BlockForce").GetComponent<BlockForce>().transform.position.x, 9, GameObject.Find("BlockForce").GetComponent<BlockForce>().transform.position.z);
-				GameObject.Find("BlockForce").GetComponent<BlockForce>().allowMashing = false;
-				GameObject.Find("BlockForce").GetComponent<Rigidbody>().isKinematic = true;
+				this.GetComponent<Rigidbody>().isKinematic = true;
+				UnityEngine.Vector3 old = parent.GetComponent<PolyManager>().blockForce.GetComponent<BlockForce>().transform.position;
+				UnityEngine.Vector3 neww = new UnityEngine.Vector3(old.x, 9, old.z);
+               	parent.GetComponent<PolyManager>().blockForce.GetComponent<BlockForce>().transform.position = neww;
+				parent.GetComponent<PolyManager>().blockForce.GetComponent<BlockForce>().allowMashing = false;
+				parent.GetComponent<PolyManager>().blockForce.GetComponent<Rigidbody>().isKinematic = true;
 				
 				timerRunning = false;
              }

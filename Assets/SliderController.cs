@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SliderController : MonoBehaviour
 {
+
+    public GameObject manModel1;
 
     public Slider slider;
     // Start is called before the first frame update
@@ -19,9 +22,8 @@ public class SliderController : MonoBehaviour
         
         slider.minValue = 0;
         slider.maxValue = GameObject.Find("BASE_Low Poly Man.001").GetComponent<TimeBody>().pointsInTime.Count-1;
-        Debug.Log(slider.maxValue);
 
-        GameObject.Find("Low Poly SuperHero").GetComponent<PolyManager>().setSliderValue((int)slider.value);
+        manModel1.GetComponent<PolyManager>().setSliderValue((int)slider.value);
 
     }
 }

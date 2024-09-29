@@ -6,6 +6,10 @@ using System;
 public class controlla : MonoBehaviour
 {
 
+    public GameObject player1;
+    public GameObject player2;
+
+
 
     public LinearIndicator healthBar;
 
@@ -93,8 +97,9 @@ public class controlla : MonoBehaviour
                 firing = false;
                 beginDegeneration = true;
                 checkingfiring = false;
-                GameObject.Find("BlockForce").GetComponent<Rigidbody>().isKinematic = false;
-                GameObject.Find("BlockForce").GetComponent<BlockForce>().keyboardNum = 1;
+                player1.GetComponent<PolyManager>().blockForce.GetComponent<Rigidbody>().isKinematic = false;
+                player1.GetComponent<PolyManager>().blockForce.GetComponent<BlockForce>().keyboardNum = 1;
+                //player1.GetComponent<PolyManager>().blockForce.GetComponent<BlockForce>().slider = slider1;
                 return;
             }
             else if(InputRedirector.getKeyDown(space, 1)){
@@ -103,8 +108,9 @@ public class controlla : MonoBehaviour
                 firing = false;
                 beginDegeneration = true;
                 checkingfiring = false;
-                GameObject.Find("BlockForce").GetComponent<Rigidbody>().isKinematic = false;
-                GameObject.Find("BlockForce").GetComponent<BlockForce>().keyboardNum = 2;
+                player2.GetComponent<PolyManager>().blockForce.GetComponent<Rigidbody>().isKinematic = false;
+                player2.GetComponent<PolyManager>().blockForce.GetComponent<BlockForce>().keyboardNum = 1; //testing
+                //player1.GetComponent<PolyManager>().blockForce.GetComponent<BlockForce>().slider = slider1;
                 return;
             };
             
@@ -129,7 +135,7 @@ public class controlla : MonoBehaviour
 
 
     float polyExplosionFrameFromHealth(float health){
-        return GameObject.Find("BlockForce").GetComponent<BlockForce>().transform.position.y * 11.1111f;
+        return player2.GetComponent<PolyManager>().blockForce.transform.position.y * 11.1111f;
     }
     
     bool healthBarLower = true;
